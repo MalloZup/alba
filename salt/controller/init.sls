@@ -16,8 +16,9 @@ ssh_public_key:
     - group: root
     - mode: 700
 
-/root/testsuite:
-file.recurse:
+cucumber-testsuite:
+   file.recurse:
+    - name: /root/testsuite
     - source: salt://controller/testsuite
     - user: root
     - group: root

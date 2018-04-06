@@ -1,8 +1,12 @@
 # Alba
 
-Using terraform and chromedriver plus cucucumber for testing a webui application.
-
 ![alba](help/alba.jpg)
+
+Using terraform and saltstack for provisioning and deploy.
+Alba will use module for adding tools to your testing automation.
+
+Ctl module:
+Ruby and cucumber chromedriver for testing a webui application.
 
 ## Install
 
