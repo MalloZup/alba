@@ -2,7 +2,7 @@
 
 Using terraform and chromedriver plus cucucumber for testing a webui application.
 
-![alba](help/alba.png)
+![alba](help/alba.jpg)
 
 ## Install
 
