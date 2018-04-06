@@ -1,2 +1,12 @@
-# alba
-test web-application framework, using ruby cucumber. Additional provide vms with terraform and saltstack for fun and profit
+# Alba
+
+Using terraform and chromedriver plus cucucumber for testing a webui application.
+
+## How to:
+
+0) adapt network_name other vars in module base
+
+```bash
+terraform init
+terraform apply
+```
