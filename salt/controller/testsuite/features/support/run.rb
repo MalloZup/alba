@@ -1,19 +1,46 @@
 require 'net/ssh'
-require 'stringio'
+require 'etc'
 
-def run(command, host, user: 'root', ignore_err: false)
-  # Execute a command on the remote server
-  # Not passing :password uses systems keys for auth
-  out = StringIO.new
-  err = StringIO.new
-  Net::SSH.start(host, user, verify_host_key: Net::SSH::Verifiers::Null.new) do |ssh|
-    ssh.exec!(command) do |_chan, str, data|
-      out << data if str == :stdout
-      err << data if str == :stderr
+module SshOperations
+  def run(command)
+    Net::SSH.start(@ip, Etc.getlogin) do |ssh|
+      stdout_data = ''
+      stderr_data = ''
+      exit_code = nil
+      ssh.open_channel do |channel|
+        channel.exec(command) do |_ch, success|
+          unless success
+            abort "FAILED: couldn't execute command (ssh.channel.exec)"
+          end
+          channel.on_data do |_ch, data|
+            stdout_data += data
+          end
+
+          channel.on_extended_data do |_ch, _type, data|
+            stderr_data += data
+          end
+
+          channel.on_request('exit-status') do |_ch, data|
+            exit_code = data.read_long
+          end
+        end
+      end
+      ssh.loop
+      [stdout_data, stderr_data, exit_code]
     end
   end
-
-  raise "Execute command failed #{command}: #{err.string}" unless ignore_err
-
-  { stdout: out.string, stderr: err.string }
 end
+
+class Server
+  include SshOperations
+  attr_accessor :server
+  def initialize
+    @ip = ENV['SERVER']
+  end
+end
+
+
+## this is for using in tests
+server = Server.new
+
+# server.run("uptime") etc

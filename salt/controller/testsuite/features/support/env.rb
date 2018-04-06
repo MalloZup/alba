@@ -1,7 +1,6 @@
 require 'English'
 require 'rubygems'
 require 'tmpdir'
-require 'yaml'
 require 'base64'
 require 'capybara'
 require 'capybara/cucumber'
@@ -12,8 +11,7 @@ require 'selenium-webdriver'
 
 ## codecoverage gem
 SimpleCov.start
-target = YAML.load_file('targets.yml')
-server = target['server']
+server = ENV['SERVER']
 
 # maximal wait before giving up
 # the tests return much before that delay in case of success
