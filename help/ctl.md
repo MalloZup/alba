@@ -12,7 +12,8 @@ cd testsuite
 vim /root/.bashrc
 ```
 And change this line with the ip of your server.
-export SERVER=127.0.0.1
+modify the server ip with the server```export SERVER=127.0.0.1```
+Reload the bashrc with source command.
 
 ## If your server is using ssl and certificates.
 
@@ -21,11 +22,10 @@ If your server is https app which is almost the case, you need to get the certif
 ```bash
 
   ssh root@alba-ctl.tf.local
-  # this work on opensuse
   # 1) get the pub cert of your server
   wget http://$SERVER/pub/RHN-ORG-TRUSTED-SSL-CERT -O /etc/pki/trust/anchors/$SERVER.cert
   update-ca-certificates
-  # create chrome cert
+  # create chrome certs
   certutil -d sql:/root/.pki/nssdb -A -t TC -n "serverundertest" -i  /etc/pki/trust/anchors/$SERVER.cert
 ```
 

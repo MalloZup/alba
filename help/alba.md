@@ -60,4 +60,11 @@ The alba project is a opensource project that take the original design from suma
 https://github.com/moio/sumaform/ and is based on terraform-libvirt-plugin https://github.com/dmacvicar/terraform-provider-libvirt
 Furthermore the packages and images are the same as sumaform project.
 
-Thx to all contributors for this 2 projects! 
+Thx to all contributors!
+
+
+#### What is not alba:
+
+In order to keep simple this project, alba will not explain you how to use other upstream projects like: terraform, salt, grafana, ruby, cucumber etc.
+
+For all this and other projects it is explicit that you will need to read the upstream documentation of the project you need knowledge.
