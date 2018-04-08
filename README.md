@@ -4,4 +4,4 @@
 
 ## Documentation
 
-[Documentation](help/index.md)
+[What is alba?](help/alba.md)
