@@ -11,9 +11,12 @@ ssh root@alba-ctl.tf.local
 cd testsuite
 vim /root/.bashrc
 ```
-And change this line with the ip of your server.
-modify the server ip with the server```export SERVER=127.0.0.1```
-Reload the bashrc with source command.
+Change this line ```export SERVER=127.0.0.1``` with your server configuration.
+
+Reload the bashrc. 
+```bash
+source /root/.bashrc
+```
 
 ## If your server is using ssl and certificates.
 
